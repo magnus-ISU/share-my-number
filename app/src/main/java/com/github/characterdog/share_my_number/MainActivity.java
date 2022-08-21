@@ -236,7 +236,6 @@ public class MainActivity extends AppCompatActivity {
             Display display = wm.getDefaultDisplay();
             Point size = new Point();
             display.getSize(size);
-            int qrSize = (int) (0.8 * (double) Math.min(size.x, size.y));
 
             setTextToTextViewOrHide(name, R.id.name, view);
             setTextToTextViewOrHide(email, R.id.email, view);
@@ -246,6 +245,7 @@ public class MainActivity extends AppCompatActivity {
             setTextToTextViewOrHide(phoneNumber, R.id.phoneNumber, view);
             setTextToTextViewOrHide(website, R.id.website, view);
 
+            int qrSize = Math.min(size.x, size.y) * 4 / 5;
             new SetQrCodeTask().execute(new SetQrCodeTaskBundle(vCard, qrSize));
         }
 
